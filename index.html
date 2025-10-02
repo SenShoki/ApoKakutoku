@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>アポ獲得 演出</title>
+  <style>
+    :root {
+      --bg: #000;
+      --accent: #ffd700; /* ゴールド */
+      --shadow: rgba(255,215,0,.35);
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--accent);
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Kaku Gothic ProN, メイリオ, sans-serif;
+      overflow: hidden;
+    }
+    .wrap {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      align-items: center;
+      justify-items: center;
+      gap: 12px;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 6vw, 88px);
+      letter-spacing: .06em;
+      text-shadow: 0 0 14px var(--shadow), 0 0 28px var(--shadow);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 8px var(--shadow), 0 0 18px var(--shadow); transform: scale(1); }
+      to   { text-shadow: 0 0 18px var(--shadow), 0 0 36px var(--shadow); transform: scale(1.02); }
+    }
+    .screen {
+      width: min(92vw, 1600px);
+      height: min(52vw, 900px);
+      max-height: 62vh;
+      border: 4px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 0 24px var(--shadow), inset 0 0 18px var(--shadow);
+      overflow: hidden;
+      position: relative;
+      background: #111;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ticker {
+      width: min(92vw, 1600px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      font-size: clamp(18px, 3.2vw, 36px);
+      line-height: 1.3;
+    }
+    .pill {
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      padding: .5em 1em;
+      text-align: center;
+      box-shadow: 0 0 14px var(--shadow) inset, 0 0 10px var(--shadow);
+      background: linear-gradient(180deg, rgba(255,215,0,.08), rgba(255,215,0,.02));
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .note {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      font-size: 12px;
+      opacity: .6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>アポ獲得</h1>
+
+    <div class="screen">
+      <!-- ブラウザの自動再生制限を回避するため muted を付けています。音を鳴らしたい場合は手動でミュート解除が必要です。 -->
+      <video autoplay muted playsinline loop>
+        <source src="pachinko.mp4" type="video/mp4">
+        お使いのブラウザは動画に対応していません。
+      </video>
+      <div class="note">pachinko.mp4 を同階層に配置</div>
+    </div>
+
+    <div class="ticker">
+      <div class="pill">案件名：テスト案件</div>
+      <div class="pill">所有者：テスト太郎</div>
+    </div>
+  </div>
+</body>
+</html>
